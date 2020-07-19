@@ -1,7 +1,7 @@
 adduser sysadmin --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 echo "sysadmin:proxmox" |  chpasswd &&
 
-apt update && apt -y install sb-release distro-info gnupg apt-transport-https software-properties-common &&
+apt update && apt -y install lsb-release distro-info gnupg apt-transport-https software-properties-common &&
 wget https://github.com/rashidpavel/Integrated-Virtual-Environment/archive/master.zip &&
 unzip master.zip && cd Integrated-Virtual-Environment-master/ &&
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list &&
