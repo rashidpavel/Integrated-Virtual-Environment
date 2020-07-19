@@ -12,5 +12,7 @@ apt update && apt -y dist-upgrade &&
 
 wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -f -v &&
 
-apt -y install tasksel docker.io tasksel certbot
+apt -y install tasksel docker.io tasksel certbot &&
+
+reboot
 
