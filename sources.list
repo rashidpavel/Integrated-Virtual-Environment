@@ -1,0 +1,12 @@
+
+### Debian Official Repository #####
+
+deb http://deb.debian.org/debian/ stable main contrib non-free
+deb http://deb.debian.org/debian-security stable/updates main contrib non-free
+deb http://ftp.debian.org/debian buster-backports main
+deb http://download.proxmox.com/debian/pve buster pve-no-subscription
+
+#### Proxmox Repository ( No-Subscription ) ####
+
+deb http://download.proxmox.com/debian/pve buster pve-no-subscription
+
