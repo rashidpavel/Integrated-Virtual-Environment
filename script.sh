@@ -16,17 +16,21 @@ apt update && apt -y install lsb-release distro-info gnupg apt-transport-https s
 
 apt update && apt -y dist-upgrade && 
 
-wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -f -v &&
+#wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -f -v &&
 
 #curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 
 #echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" >> /etc/apt/sources.list &&
 
-apt update && apt -y install docker.io tasksel certbot gnome gdm3 xrdp &&
+wget https://gandalfn.ovh/debian/pool/main/p/pantheon-debian-repos/pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
-docker volume create portainer_data &&
+dpkg -i pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
-docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer &&
+apt update && apt -y install tasksel certbot pantheon pantheon-shell gdm3 xrdp &&
+
+#docker volume create portainer_data &&
+
+#docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer &&
 
 reboot
 
