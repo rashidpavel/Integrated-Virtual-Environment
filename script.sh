@@ -1,5 +1,5 @@
 adduser sysadmin --gecos "Sysadmin MRPlab,RoomNumber,WorkPhone,HomePhone" --disabled-password
-echo "sysadmin:proxmox" |  chpasswd &&
+echo "sysadmin:chummah" |  chpasswd &&
 
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list && rm -rf /etc/apt/sources.list &&
 touch /etc/apt/sources.list &&
