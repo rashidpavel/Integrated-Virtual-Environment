@@ -27,7 +27,13 @@ wget https://gandalfn.ovh/debian/pool/main/p/pantheon-debian-repos/pantheon-debi
 
 dpkg -i pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
-apt update && apt -y install webmin cockpit tasksel certbot pantheon pantheon-shell gdm3 xrdp 
+apt update && apt -y install webmin cockpit tasksel certbot gnome pantheon pantheon-shell gdm3 xrdp &&
+
+apt -y remove network-manager &&
+
+apt -y install synaptic build-essential gparted &&
+
+reboot
 #docker volume create portainer_data &&
 
 #docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer &&
