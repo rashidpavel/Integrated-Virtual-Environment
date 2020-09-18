@@ -17,7 +17,7 @@ wget http://download.proxmox.com/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/t
 apt update && apt -y dist-upgrade && apt -y install lsb-release distro-info gnupg apt-transport-https software-properties-common curl &&
 
 
-wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -b LEMP -f -v &&
+wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -f -v &&
 
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 
@@ -27,7 +27,7 @@ wget https://gandalfn.ovh/debian/pool/main/p/pantheon-debian-repos/pantheon-debi
 
 dpkg -i pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
-apt update && apt -y install docker-ce cockpit cockpit-docker tasksel certbot pantheon pantheon-shell pantheon-extras lightdm xrdp &&
+apt update && apt -y install docker-ce cockpit cockpit-docker tasksel certbot pantheon pantheon-shell pantheon-extras gnome gdm3 xrdp &&
 
 apt -y remove network-manager &&
 
