@@ -1,6 +1,6 @@
 
 hostnamectl set-hostname mypve.nunumia.xyz --static &&
-echo "192.168.100.34 mypve.nunumia.xyz mypve" | tee -a /etc/hosts &&
+echo "192.168.100.28 mypve.nunumia.xyz mypve" | tee -a /etc/hosts &&
 
 echo "deb http://ftp.debian.org/debian buster-backports main" >> /etc/apt/sources.list &&
 echo "deb http://deb.debian.org/debian/ stable main contrib non-free" >> /etc/apt/sources.list &&
