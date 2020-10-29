@@ -1,5 +1,5 @@
-#adduser sysadmin --gecos "Sysadmin MRPlab,RoomNumber,WorkPhone,HomePhone" --disabled-password
-#echo "sysadmin:x" |  chpasswd &&
+adduser sysadmin --gecos "Pavel Rashid" --disabled-password
+echo "mrp:x" |  chpasswd &&
 
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list && rm -rf /etc/apt/sources.list &&
 touch /etc/apt/sources.list &&
@@ -17,29 +17,28 @@ apt-key add jcameron-key.asc &&
 apt update && apt -y dist-upgrade && apt -y install lsb-release distro-info gnupg apt-transport-https software-properties-common curl &&
 
 
-wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -f -v &&
+#wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -f -v &&
 
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - &&
 
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable" &&
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" &&
 
 
 #wget https://gandalfn.ovh/debian/pool/main/p/pantheon-debian-repos/pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
 #dpkg -i pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
-apt update && apt -y install docker-ce docker-ce-cli containerd.io tasksel certbot gnome-flashback &&
+apt update && apt -y install docker-ce docker-ce-cli containerd.io tasksel certbot task-desktop gnome gnome-flashback gdm3 apache2 php7.3 mariadb-server samba nfs-kernel-server &&
 
-#apt -y remove network-manager &&
+apt -y remove network-manager && network-manager-gnome &&
 
 apt -y install synaptic build-essential gparted &&
 
 docker volume create portainer_data &&
 
 docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer &&
+
+systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target &&
 
 reboot
 
