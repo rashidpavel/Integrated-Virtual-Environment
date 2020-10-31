@@ -1,4 +1,4 @@
-adduser sysadmin --gecos "Pavel Rashid" --disabled-password
+adduser mrp --gecos "Pavel Rashid" --disabled-password
 echo "mrp:x" |  chpasswd &&
 
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list && rm -rf /etc/apt/sources.list &&
@@ -14,7 +14,7 @@ echo "deb https://download.webmin.com/download/repository sarge contrib" >> /etc
 wget http://download.proxmox.com/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg &&
 wget https://download.webmin.com/jcameron-key.asc &&
 apt-key add jcameron-key.asc &&
-apt update && apt -y dist-upgrade && apt -y install lsb-release distro-info gnupg apt-transport-https software-properties-common curl &&
+apt update && apt -y dist-upgrade && apt -y install lsb-release distro-info gnupg apt-transport-https software-properties-common curl ifupdown2 &&
 
 
 #wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -f -v &&
@@ -28,17 +28,17 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(
 
 #dpkg -i pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
-apt update && apt -y install docker-ce docker-ce-cli containerd.io tasksel certbot task-desktop gnome gnome-flashback gdm3 apache2 php7.3 mariadb-server samba nfs-kernel-server &&
+apt update && apt -y install webmin docker-ce docker-ce-cli containerd.io tasksel certbot apache2 php7.3 mariadb-server samba nfs-kernel-server &&
 
-apt -y remove network-manager && network-manager-gnome &&
+#apt -y remove network-manager && network-manager-gnome &&
 
-apt -y install synaptic build-essential gparted &&
+#apt -y install synaptic build-essential gparted &&
 
 docker volume create portainer_data &&
 
 docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer &&
 
-systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target &&
+#systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target &&
 
 reboot
 
