@@ -14,31 +14,29 @@ echo "deb https://download.webmin.com/download/repository sarge contrib" >> /etc
 wget http://download.proxmox.com/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg &&
 wget https://download.webmin.com/jcameron-key.asc &&
 apt-key add jcameron-key.asc &&
-apt update && apt -y dist-upgrade && apt -y install lsb-release distro-info gnupg apt-transport-https software-properties-common curl ifupdown2 &&
+apt-get update && apt-get -y dist-upgrade && apt -y install lsb-release distro-info gnupg apt-transport-https software-properties-common curl ifupdown2 &&
 
 
 #wget http://software.virtualmin.com/gpl/scripts/install.sh && chmod a+x install.sh && ./install.sh -m -f -v &&
 
-curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - &&
+#curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - &&
 
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" &&
+#add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" &&
 
 
-#wget https://gandalfn.ovh/debian/pool/main/p/pantheon-debian-repos/pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
+wget https://gandalfn.ovh/debian/pool/main/p/pantheon-debian-repos/pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
-#dpkg -i pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
+dpkg -i pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
-apt update && apt -y install webmin docker-ce docker-ce-cli containerd.io tasksel certbot apache2 php7.3 mariadb-server samba nfs-kernel-server &&
+apt-get update && apt-get -y install webmin tasksel certbot apache2 php7.3 mariadb-server samba nfs-kernel-server task-desktop pantheon pantheon-shell gdm3 &&
 
-#apt -y remove network-manager && network-manager-gnome &&
+apt -y remove network-manager && network-manager-gnome &&
 
-#apt -y install synaptic build-essential gparted &&
+apt -y install synaptic build-essential gparted &&
 
-docker volume create portainer_data &&
+#docker volume create portainer_data &&
 
-docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer &&
+#docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer &&
 
-#systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target &&
-
-reboot
+systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
